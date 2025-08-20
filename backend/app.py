@@ -74,5 +74,15 @@ def create_app(config_name):
         return {'error': 'Internal server error'}, 500
     
     return app
-
 celery = create_celery_app()
+
+# Create the Flask app instance in the global scope
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+
+# Create the Celery instance using the app
+celery = create_celery_app(app)
+
+# This part is for running locally, Gunicorn doesn't use it
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
