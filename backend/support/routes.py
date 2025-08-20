@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlalchemy import desc
 
 from models import db, SupportTicket, TicketResponse, User
-from ..admin.routes import admin_required
+from admin.routes import admin_required
 
 support_bp = Blueprint('support', __name__)
 
