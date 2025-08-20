@@ -6,7 +6,7 @@ import os
 from werkzeug.utils import secure_filename
 
 from models import db, BlogPost, User
-from ..admin.routes import admin_required
+from admin.routes import admin_required
 
 blog_bp = Blueprint('blog', __name__)
 
